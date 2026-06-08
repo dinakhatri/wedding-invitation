@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dina & Joyal Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#faf6f2;
+    color:#333;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    background:linear-gradient(
+        rgba(255,255,255,0.7),
+        rgba(255,255,255,0.7)
+    ),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+}
+
+.card{
+    background:rgba(255,255,255,0.92);
+    padding:50px;
+    border-radius:20px;
+    max-width:700px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1{
+    font-family:'Playfair Display',serif;
+    font-size:4rem;
+    color:#8b5e3c;
+}
+
+.subtitle{
+    margin-top:10px;
+    font-size:1.2rem;
+    letter-spacing:2px;
+}
+
+.message{
+    margin-top:30px;
+    line-height:1.8;
+}
+
+.details{
+    margin-top:30px;
+    font-size:1.1rem;
+}
+
+.countdown{
+    margin-top:35px;
+    font-size:1.5rem;
+    font-weight:bold;
+    color:#8b5e3c;
+}
+
+.button{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 28px;
+    text-decoration:none;
+    background:#8b5e3c;
+    color:white;
+    border-radius:50px;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#6d472c;
+}
+
+.footer{
+    margin-top:30px;
+    font-style:italic;
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:2.5rem;
+    }
+
+    .card{
+        padding:30px;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="card">
+
+        <p class="subtitle">Together With Our Families</p>
+
+        <h1>Dina & Joyal</h1>
+
+        <div class="message">
+            Joyfully invite you to celebrate our wedding and share
+            in this special moment as we begin our new journey together.
+        </div>
+
+        <div class="details">
+            <p><strong>Date:</strong> Tuesday, June 23, 2026</p>
+            <p><strong>Venue:</strong> Ichhangu Temple</p>
+            <p><strong>Time:</strong> To Be Announced</p>
+        </div>
+
+        <div class="countdown" id="countdown"></div>
+
+        <!-- Replace # with Google Form RSVP link later -->
+        <a href="#" class="button">RSVP</a>
+
+        <div class="footer">
+            We look forward to celebrating with you ❤️
+        </div>
+
+    </div>
+</section>
+
+<script>
+const weddingDate = new Date("June 23, 2026 00:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24))
+                    / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60))
+                    / (1000 * 60));
+
+    document.getElementById("countdown").innerHTML =
+        `${days} Days ${hours} Hours ${minutes} Minutes Until Our Wedding`;
+
+    if (distance < 0) {
+        document.getElementById("countdown").innerHTML =
+            "Our Wedding Day Has Arrived!";
+    }
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
